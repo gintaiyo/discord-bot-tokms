@@ -1,0 +1,24 @@
+{
+  "name": "discordjs-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.84",
+    "ascii-table": "^0.0.9",
+    "canvas": "^3.2.0",
+    "crypto": "^1.0.1",
+    "datetime": "^0.0.3",
+    "discord-gamecord": "^4.4.4",
+    "discord.js": "^14.23.2",
+    "mongoose": "^8.20.2",
+    "node-fetch": "^3.3.2",
+    "stream": "^0.0.3"
+  }
+}
