@@ -1,4 +1,3 @@
-/* Bot discord.js setup */
 const { Client, Collection, GatewayIntentBits, Partials, EmbedBuilder } = require("discord.js");
 const { User, GuildMember, GuildScheduledEvent, Message, Reaction, ThreadMember } = Partials
 const { Guilds, GuildMembers, GuildMessages, GuildVoiceStates, DirectMessages, GuildMessageReactions, GuildEmojisAndStickers, GuildWebhooks, GuildIntegrations, MessageContent, GuildPresences } = GatewayIntentBits;
@@ -7,8 +6,6 @@ const fs = require('fs');
 
 //mongo
 const { connectMongo } = require("./utils/mongo");
-const Afk = require('./models/Afk.js'); // <-- your model
-client.AfkCollection = Afk;
 connectMongo();
 
 
@@ -67,21 +64,3 @@ client.on('messageCreate', async (message) => {
         message.reply('there was an error executing that command.');
     }
 });
-
-// after you create the client
-client.snipes = new Map();
-
-// messageDelete listener
-client.on('messageDelete', (message) => {
-  if (!message.guild || !message.author || message.author.bot) return;
-
-  const channelId = message.channel.id;
-  client.snipes.set(channelId, {
-    content: message.content || '(no content)',
-    authorTag: message.author.username,
-    authorAvatar: message.author.displayAvatarURL({ size: 256 }),
-    createdAt: message.createdAt,
-    attachment: message.attachments.first()?.url || null,
-  });
-});
-
