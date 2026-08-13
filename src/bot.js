@@ -1,8 +1,29 @@
 const { Client, Collection, GatewayIntentBits, Partials, EmbedBuilder } = require("discord.js");
-const { User, GuildMember, GuildScheduledEvent, Message, Reaction, ThreadMember } = Partials
-const { Guilds, GuildMembers, GuildMessages, GuildVoiceStates, DirectMessages, GuildMessageReactions, GuildEmojisAndStickers, GuildWebhooks, GuildIntegrations, MessageContent, GuildPresences } = GatewayIntentBits;
-const client = new Client({ intents: [Guilds, GuildMembers, GuildMessages, GuildVoiceStates, DirectMessages, GuildMessageReactions, GuildEmojisAndStickers, GuildWebhooks, GuildIntegrations, MessageContent, GuildPresences], partials: [User, Message, GuildMember, ThreadMember, GuildScheduledEvent, Reaction] });
 const fs = require('fs');
+
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.GuildEmojisAndStickers,
+        GatewayIntentBits.GuildWebhooks,
+        GatewayIntentBits.GuildIntegrations,
+        GatewayIntentBits.MessageContent
+        // Note: Add GatewayIntentBits.GuildPresences if you toggle Presence Intent ON in the Developer Portal
+    ],
+    partials: [
+        Partials.User,
+        Partials.Message,
+        Partials.GuildMember,
+        Partials.ThreadMember,
+        Partials.GuildScheduledEvent,
+        Partials.Reaction
+    ]
+});
 
 //mongo
 const { connectMongo } = require("./utils/mongo");
@@ -20,7 +41,7 @@ client.modals = new Collection();
 client.buttons = new Collection();
 client.selectMenus = new Collection();
 
-const prefix = ['T!', 't!']; // Replace with your desired prefix
+const prefix = ['.', '!']; 
 
 /* Discord Handler */
 const { loadEvents } = require('./handlers/EventHandler')
@@ -64,3 +85,4 @@ client.on('messageCreate', async (message) => {
         message.reply('there was an error executing that command.');
     }
 });
+

@@ -11,6 +11,7 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        interaction.reply(`**PONG! Api Ping is:** \`${client.ws.ping}ms\``)
+        await interaction.deferReply({ flags: 64 });
+        await interaction.editReply(`🏓 Pong! \`${client.ws.ping}ms\``);
     }
 }
