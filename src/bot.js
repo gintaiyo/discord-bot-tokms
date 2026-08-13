@@ -47,7 +47,6 @@ const prefix = ['.', '!'];
 const { loadEvents } = require('./handlers/EventHandler')
 const { loadCommands } = require('./handlers/CommandHandler.js');
 const { loadComponents } = require('./handlers/ComponentHandler');
-const { loadMessageCommands } = require('./handlers/MsgCommandHandler');
 
 /* Client Login */
 client.login(client.config.token)
@@ -56,33 +55,4 @@ client.login(client.config.token)
     loadEvents(client);
     loadCommands(client);
     loadComponents(client);
-    loadMessageCommands(client);
 })
-
-client.on('messageCreate', async (message) => {
-    if (!message.guild) return;
-    if (message.author.bot) return;
-
-    // find which prefix (if any) was used
-    const usedPrefix = prefix.find((p) => message.content.startsWith(p));
-    if (!usedPrefix) return;
-
-    const args = message.content.slice(usedPrefix.length).trim().split(/\s+/);
-    const cmdName = args.shift().toLowerCase();
-
-    const command = client.messageCommands.get(cmdName);
-    if (!command) return;
-
-    // optional: permission check like before
-    if (command.userPerms && !message.member.permissions.has(command.userPerms)) {
-        return message.reply('You do not have permission to use this command.');
-    }
-
-    try {
-        await command.execute(message, args, client);
-    } catch (err) {
-        console.error(err);
-        message.reply('there was an error executing that command.');
-    }
-});
-
