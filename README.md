@@ -9,3 +9,4 @@ Moderation command: ban, unban, kick
 
 Day 2:
 Remove message command types completely
+and also add more moderation command and if possible make old commands better
