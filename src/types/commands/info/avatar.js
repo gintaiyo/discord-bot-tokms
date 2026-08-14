@@ -11,11 +11,10 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        // Fix 1: Fallback to interaction.user if no target option is selected
+        await interaction.deferReply({ ephemeral: false });
         const user = interaction.options.getUser('user') || interaction.user;
         const avatar = user.displayAvatarURL({ extension: 'png', size: 1024 });
 
-        // Fix 2: Corrected variable typo (emebed -> embed)
         const embed = new EmbedBuilder()
             .setTitle(`${user.username}'s Avatar`)
             .setImage(avatar)
@@ -32,6 +31,6 @@ module.exports = {
         const row = new ActionRowBuilder()
             .addComponents(button);
 
-        await interaction.reply({ embeds: [embed], components: [row] });
+        await interaction.editReply({ embeds: [embed], components: [row] });
     }
 };
