@@ -1,4 +1,4 @@
-Its daily thing ill progress one by one with hand (no ai)
+## Its daily thing ill progress one by one with hand (no ai)
 
 # Day 0: 
 Basic handler and some things imported from my discordjs-v14-handler
@@ -11,3 +11,6 @@ Remove message command types completely
 # Day 2:
 Changed the look of kick, ban, unban
 New added commands: cases, mute, unmute, lock, unlock, purge, whois (mod view) 
+
+# Day 3:
+Add warn command and some more moderation things
