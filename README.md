@@ -13,4 +13,5 @@ Changed the look of kick, ban, unban
 New added commands: cases, mute, unmute, lock, unlock, purge, whois (mod view) 
 
 # Day 3:
-Add warn command and some more moderation things
+Added warn command
+Added warn command subcommands
