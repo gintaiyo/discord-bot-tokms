@@ -41,7 +41,6 @@ module.exports = {
         }
 
         try {
-            // Setting SendMessages to null resets the override back to default/inherited
             await targetChannel.permissionOverwrites.edit(everyoneRole, {
                 SendMessages: null
             }, { reason: `${reason} | Unlocked by ${interaction.user.tag}` });
@@ -58,7 +57,6 @@ module.exports = {
                 )
                 .setTimestamp();
 
-            // Send notification inside the target channel
             await targetChannel.send({ embeds: [unlockEmbed] });
 
             if (targetChannel.id === interaction.channel.id) {
