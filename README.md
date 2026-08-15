@@ -15,3 +15,4 @@ New added commands: cases, mute, unmute, lock, unlock, purge, whois (mod view)
 # Day 3:
 Added warn command
 Added warn command subcommands
+Also made info commands better
